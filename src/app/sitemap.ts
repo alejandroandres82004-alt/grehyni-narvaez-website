@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { properties } from "@/data/properties";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://grehyninarvaez.com";
+  const baseUrl = "https://www.grehyninarvaezvenezuela.com";
 
   const propertyUrls = properties.map((p) => ({
     url: `${baseUrl}/propiedades/${p.id}`,
