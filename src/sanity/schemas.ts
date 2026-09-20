@@ -1,0 +1,200 @@
+// Sanity schema definitions for the CMS Studio
+// These define the content structure your client will see in the admin panel
+
+export const propertySchema = {
+  name: "property",
+  title: "Propiedad",
+  type: "document",
+  fields: [
+    {
+      name: "id",
+      title: "URL Slug",
+      type: "slug",
+      options: { source: "titleEs" },
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
+    },
+    {
+      name: "titleEs",
+      title: "Nombre (Español)",
+      type: "string",
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
+    },
+    {
+      name: "titleEn",
+      title: "Name (English)",
+      type: "string",
+    },
+    {
+      name: "descriptionEs",
+      title: "Descripción (Español)",
+      type: "text",
+      rows: 4,
+    },
+    {
+      name: "descriptionEn",
+      title: "Description (English)",
+      type: "text",
+      rows: 4,
+    },
+    {
+      name: "type",
+      title: "Tipo",
+      type: "string",
+      options: {
+        list: [
+          { title: "Apartamento", value: "apartment" },
+          { title: "Casa", value: "house" },
+          { title: "Comercial", value: "commercial" },
+          { title: "Terreno", value: "land" },
+        ],
+      },
+    },
+    {
+      name: "price",
+      title: "Precio",
+      type: "string",
+      description: 'Ej: "$185,000" o "Consultar"',
+    },
+    {
+      name: "locationEs",
+      title: "Ubicación (Español)",
+      type: "string",
+    },
+    {
+      name: "locationEn",
+      title: "Location (English)",
+      type: "string",
+    },
+    {
+      name: "bedrooms",
+      title: "Habitaciones",
+      type: "number",
+    },
+    {
+      name: "bathrooms",
+      title: "Baños",
+      type: "number",
+    },
+    {
+      name: "area",
+      title: "Área (m²)",
+      type: "string",
+    },
+    {
+      name: "images",
+      title: "Imágenes",
+      type: "array",
+      of: [{ type: "image", options: { hotspot: true } }],
+    },
+    {
+      name: "featuresEs",
+      title: "Características (Español)",
+      type: "array",
+      of: [{ type: "string" }],
+    },
+    {
+      name: "featuresEn",
+      title: "Features (English)",
+      type: "array",
+      of: [{ type: "string" }],
+    },
+    {
+      name: "featured",
+      title: "Destacada",
+      type: "boolean",
+      description: "Mostrar en la página principal",
+    },
+    {
+      name: "developer",
+      title: "Desarrollador",
+      type: "string",
+    },
+    {
+      name: "website",
+      title: "Website del Proyecto",
+      type: "url",
+    },
+    {
+      name: "brochureUrl",
+      title: "Brochure PDF",
+      type: "file",
+    },
+  ],
+};
+
+export const testimonialSchema = {
+  name: "testimonial",
+  title: "Testimonio",
+  type: "document",
+  fields: [
+    {
+      name: "name",
+      title: "Nombre",
+      type: "string",
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
+    },
+    {
+      name: "locationEs",
+      title: "Ubicación (Español)",
+      type: "string",
+    },
+    {
+      name: "locationEn",
+      title: "Location (English)",
+      type: "string",
+    },
+    {
+      name: "textEs",
+      title: "Testimonio (Español)",
+      type: "text",
+    },
+    {
+      name: "textEn",
+      title: "Testimonial (English)",
+      type: "text",
+    },
+  ],
+};
+
+export const instagramPostSchema = {
+  name: "instagramPost",
+  title: "Post de Instagram",
+  type: "document",
+  fields: [
+    {
+      name: "url",
+      title: "URL del Post",
+      type: "url",
+      description: "Pega la URL completa del post de Instagram (ej: https://www.instagram.com/p/ABC123/)",
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
+    },
+    {
+      name: "titleEs",
+      title: "Título (Español)",
+      type: "string",
+    },
+    {
+      name: "titleEn",
+      title: "Title (English)",
+      type: "string",
+    },
+    {
+      name: "descriptionEs",
+      title: "Descripción (Español)",
+      type: "text",
+      rows: 2,
+    },
+    {
+      name: "descriptionEn",
+      title: "Description (English)",
+      type: "text",
+      rows: 2,
+    },
+    {
+      name: "thumbnail",
+      title: "Imagen de Portada",
+      type: "image",
+      options: { hotspot: true },
+    },
+  ],
+};

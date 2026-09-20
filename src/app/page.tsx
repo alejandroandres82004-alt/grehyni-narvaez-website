@@ -5,7 +5,7 @@ import VideoHero from "@/components/VideoHero";
 import PropertyCard from "@/components/PropertyCard";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
-import InsightsSection from "@/components/InsightsSection";
+import InstagramFeed from "@/components/InstagramFeed";
 import Testimonials from "@/components/Testimonials";
 import CredentialsStrip from "@/components/CredentialsStrip";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -31,7 +31,7 @@ export default function Home() {
             description: "Luxury real estate investment in Venezuela",
             telephone: "+17865548738",
             email: "asefinancial@gmail.com",
-            url: "https://grehyninarvaez.com",
+            url: "https://www.grehyninarvaezvenezuela.com",
             areaServed: { "@type": "Country", name: "Venezuela" },
             knowsAbout: ["Real Estate", "Luxury Properties", "Investment"],
           }),
@@ -112,7 +112,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/15" />
       </div>
 
-      <InsightsSection />
+      <InstagramFeed />
       <ContactSection />
     </>
   );
