@@ -1,69 +1,119 @@
+"use client";
+
 import Image from "next/image";
+import VideoHero from "@/components/VideoHero";
+import PropertyCard from "@/components/PropertyCard";
+import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import InsightsSection from "@/components/InsightsSection";
+import Testimonials from "@/components/Testimonials";
+import CredentialsStrip from "@/components/CredentialsStrip";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { properties } from "@/data/properties";
+import Link from "next/link";
+import useReveal from "@/components/useReveal";
 
 export default function Home() {
+  const { t } = useLanguage();
+  useReveal();
+  const featured = properties.filter((p) => p.featured);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            name: "Grehyni Narvaez",
+            description: "Luxury real estate investment in Venezuela",
+            telephone: "+17865548738",
+            email: "asefinancial@gmail.com",
+            url: "https://grehyninarvaez.com",
+            areaServed: { "@type": "Country", name: "Venezuela" },
+            knowsAbout: ["Real Estate", "Luxury Properties", "Investment"],
+          }),
+        }}
+      />
+
+      <VideoHero />
+      <CredentialsStrip />
+
+      {/* Featured Properties */}
+      <section className="py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="mb-20 reveal">
+            <p className="text-accent text-[11px] tracking-[0.5em] uppercase mb-4">
+              {t.properties.subtitle}
+            </p>
+            <div className="flex items-end justify-between flex-wrap gap-6">
+              <h2 className="font-serif text-5xl md:text-7xl font-light text-dark leading-[0.95]" style={{ letterSpacing: "-0.02em" }}>
+                {t.properties.title}
+              </h2>
+              <Link
+                href="/propiedades"
+                className="text-[11px] uppercase tracking-[0.15em] text-muted hover:text-accent transition-colors duration-500 nav-link pb-1 hidden md:inline-flex items-center gap-2"
+              >
+                {t.properties.viewAll}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
+            {featured.map((property, i) => (
+              <div key={property.id} className={`reveal ${i === 1 ? "reveal-delay" : i === 2 ? "reveal-delay-2" : ""}`}>
+                <PropertyCard property={property} />
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-16 reveal md:hidden">
+            <Link
+              href="/propiedades"
+              className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.15em] text-muted hover:text-accent transition-colors duration-500 nav-link pb-1"
+            >
+              {t.properties.viewAll}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-width image with curves */}
+      <div className="relative h-[60vh] overflow-hidden curve-top curve-bottom cursor-view">
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src="/images/alma-caracas/amenidad-piscina-nueva.jpg"
+          alt="Infinity pool with mountain views"
+          fill
+          className="object-cover"
+          sizes="100vw"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <div className="absolute inset-0 bg-black/10" />
+      </div>
+
+      <AboutSection />
+      <Testimonials />
+
+      <div className="relative h-[50vh] overflow-hidden curve-top curve-bottom cursor-view">
+        <Image
+          src="/images/alma-caracas/alma_wellness_terraza_horizontal.jpg"
+          alt="Rooftop terrace view"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/15" />
+      </div>
+
+      <InsightsSection />
+      <ContactSection />
+    </>
   );
 }
