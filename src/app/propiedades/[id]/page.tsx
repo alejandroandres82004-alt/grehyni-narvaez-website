@@ -44,14 +44,16 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
     <div className="pt-20 pb-24">
       {/* Hero Image */}
       <div className="relative h-[60vh] md:h-[75vh] overflow-hidden bg-light cursor-view">
-        <Image
-          src={property.images[activeImage]}
-          alt={property.title[lang]}
-          fill
-          className="object-cover transition-opacity duration-500"
-          priority
-          quality={90}
-        />
+        {property.images && property.images.length > 0 && (
+          <Image
+            src={property.images[activeImage] || property.images[0]}
+            alt={property.title?.[lang] || ""}
+            fill
+            className="object-cover transition-opacity duration-500"
+            priority
+            quality={90}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-ivory via-transparent to-black/10" />
 
         <Link
@@ -105,10 +107,12 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-1">{t.properties.bathrooms}</p>
                 </div>
               )}
-              <div>
-                <p className="font-serif text-4xl font-light text-dark">{property.area}</p>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-1">m²</p>
-              </div>
+              {property.area && (
+                <div>
+                  <p className="font-serif text-4xl font-light text-dark">{property.area}</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-1">m²</p>
+                </div>
+              )}
             </div>
 
             {/* Description */}
