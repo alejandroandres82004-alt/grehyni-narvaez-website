@@ -81,10 +81,10 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
           <div className="lg:col-span-2">
             <div className="reveal">
               <p className="text-[11px] uppercase tracking-[0.25em] text-accent mb-4">
-                {t.properties[property.type]} · {property.location[lang]}
+                {property.type && t.properties[property.type]} · {property.location?.[lang] || ""}
               </p>
               <h1 className="font-serif text-3xl md:text-[2.75rem] font-light text-dark leading-tight mb-3">
-                {property.title[lang]}
+                {property.title?.[lang] || ""}
               </h1>
               {property.developer && (
                 <p className="text-[11px] uppercase tracking-[0.2em] text-muted mb-8">
@@ -121,7 +121,7 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
                 {t.properties.description}
               </h2>
               <p className="text-charcoal text-base leading-[2] font-light">
-                {property.description[lang]}
+                {property.description?.[lang] || ""}
               </p>
             </div>
 
@@ -131,7 +131,7 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
                 {t.properties.features}
               </h2>
               <div className="grid grid-cols-2 gap-x-8 gap-y-1">
-                {property.features[lang].map((feature) => (
+                {(property.features?.[lang] || []).map((feature: string) => (
                   <div key={feature} className="flex items-center gap-3 py-3 border-b border-sand/50">
                     <div className="w-1 h-1 rounded-full bg-accent shrink-0" />
                     <span className="text-charcoal font-light text-sm">{feature}</span>
