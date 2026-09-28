@@ -369,4 +369,28 @@ export const properties: Property[] = [
     featured: false,
     developer: "Camino Ávila",
   },
+  {
+    id: "residencia-caroni",
+    title: {
+      es: "Residencia Caroni Altamira",
+      en: "Residence Caroni Altamira",
+    },
+    description: {
+      es: "Nueva construcción en una de las zonas residenciales más privilegiadas de Caracas. Nace como una propuesta de lujo, exclusividad y arquitectura contemporánea con el sello de Diseño AÑIL. Edificio boutique, solo 8 apartamentos, acabados de primera. Entrega estimada 2028. Un proyecto pensado para quienes valoran el diseño, la privacidad y una ubicación excepcional, con el Ávila como protagonista del entorno.",
+      en: "New construction in one of the most privileged residential areas of Caracas. Born as a proposal of luxury, exclusivity, and contemporary architecture with the AÑIL Design seal. Boutique building, only 8 apartments, premium finishes. Estimated delivery 2028. A project designed for those who value design, privacy, and an exceptional location, with the Avila as the centerpiece.",
+    },
+    type: "apartment",
+    price: "Consultar",
+    location: { es: "Altamira, Caracas", en: "Altamira, Caracas" },
+    bedrooms: 0,
+    bathrooms: 0,
+    area: "Consultar",
+    images: [],
+    features: {
+      es: ["Boutique", "8 Apartamentos", "Ubicación Única", "Vista Al Ávila", "Est 2028"],
+      en: ["Boutique", "8 Apartments", "Unique Location", "View of the Avila", "Est 2028"],
+    },
+    featured: false,
+    developer: "Diseño AÑIL",
+  },
 ];
