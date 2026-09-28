@@ -3,12 +3,13 @@
 import { useState } from "react";
 import PropertyCard from "@/components/PropertyCard";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { properties } from "@/data/properties";
+import { useProperties } from "@/sanity/useSanity";
 
 type FilterType = "all" | "apartment" | "house" | "commercial" | "land";
 
 export default function PropertiesPage() {
   const { t } = useLanguage();
+  const { properties } = useProperties();
   const [filter, setFilter] = useState<FilterType>("all");
 
   const filtered = filter === "all" ? properties : properties.filter((p) => p.type === filter);

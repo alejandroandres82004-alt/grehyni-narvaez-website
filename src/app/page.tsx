@@ -9,13 +9,14 @@ import InstagramFeed from "@/components/InstagramFeed";
 import Testimonials from "@/components/Testimonials";
 import CredentialsStrip from "@/components/CredentialsStrip";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { properties } from "@/data/properties";
+import { useProperties } from "@/sanity/useSanity";
 import Link from "next/link";
 import useReveal from "@/components/useReveal";
 
 export default function Home() {
   const { t } = useLanguage();
   useReveal();
+  const { properties } = useProperties();
   const featured = properties.filter((p) => p.featured);
 
   return (

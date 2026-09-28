@@ -4,7 +4,7 @@ import { use, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { properties } from "@/data/properties";
+import { useProperty } from "@/sanity/useSanity";
 import { getWhatsAppUrl } from "@/components/WhatsAppButton";
 import HorizontalGallery from "@/components/HorizontalGallery";
 import useReveal from "@/components/useReveal";
@@ -15,7 +15,15 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
   const [activeImage, setActiveImage] = useState(0);
   useReveal();
 
-  const property = properties.find((p) => p.id === id);
+  const { property, loading } = useProperty(id);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="font-serif text-2xl text-muted font-light">Cargando...</div>
+      </div>
+    );
+  }
 
   if (!property) {
     return (
