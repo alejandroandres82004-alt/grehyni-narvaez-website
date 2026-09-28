@@ -95,13 +95,13 @@ export default function PropertyDetail({ params }: { params: Promise<{ id: strin
 
             {/* Stats */}
             <div className="flex flex-wrap gap-10 mb-12 pb-12 border-b border-sand reveal reveal-delay">
-              {property.bedrooms > 0 && (
+              {property.bedrooms && (
                 <div>
                   <p className="font-serif text-4xl font-light text-dark">{property.bedrooms}</p>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-1">{t.properties.bedrooms}</p>
                 </div>
               )}
-              {property.bathrooms > 0 && (
+              {property.bathrooms && (
                 <div>
                   <p className="font-serif text-4xl font-light text-dark">{property.bathrooms}</p>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-1">{t.properties.bathrooms}</p>

@@ -43,8 +43,8 @@ export default function PropertyCard({ property }: { property: Property }) {
             {property.title?.[lang] || ""}
           </h3>
           <p className="text-[12px] text-muted">
-            {property.bedrooms > 0 && `${property.bedrooms} ${t.properties.bedrooms}`}
-            {property.bathrooms > 0 && ` · ${property.bathrooms} ${t.properties.bathrooms}`}
+            {property.bedrooms && `${property.bedrooms} ${t.properties.bedrooms}`}
+            {property.bathrooms && ` · ${property.bathrooms} ${t.properties.bathrooms}`}
             {property.area && ` · ${property.area} m²`}
           </p>
         </div>

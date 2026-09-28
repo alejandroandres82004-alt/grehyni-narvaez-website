@@ -69,14 +69,14 @@ const property = defineType({
     defineField({
       name: "bedrooms",
       title: "Habitaciones",
-      type: "number",
-      initialValue: 0,
+      type: "string",
+      description: 'Ej: "3" o "1 - 3" o "2 - 4"',
     }),
     defineField({
       name: "bathrooms",
       title: "Baños",
-      type: "number",
-      initialValue: 0,
+      type: "string",
+      description: 'Ej: "2" o "2 - 3"',
     }),
     defineField({
       name: "area",

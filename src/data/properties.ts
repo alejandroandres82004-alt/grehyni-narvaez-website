@@ -5,8 +5,8 @@ export interface Property {
   type: "apartment" | "house" | "commercial" | "land";
   price: string;
   location: { es: string; en: string };
-  bedrooms: number;
-  bathrooms: number;
+  bedrooms: number | string;
+  bathrooms: number | string;
   area: string;
   images: string[];
   videoUrl?: string;
